@@ -1,0 +1,52 @@
+html {
+    font-family: arial;
+}
+
+#header {
+    text-align: center;
+}
+
+.resource-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 14vw;
+    height: 20%;
+    min-height: 80px;
+    border-radius: 5px;
+    text-align: center;
+    margin: 15px; 0 0 15px;
+    
+}
+
+#plus { color: #2dd257; font-size: 26px; }
+
+#form-container {
+    width: 350px;
+    height: 60px;
+    margin: auto;
+    background: rgba(47, 38, 37, 0.25);;
+    padding: 25px 0 0 25px;
+    border-radius: 5px;
+    display: none;
+    position: fixed;
+    top: 10px;
+    left: 20px;
+}
+
+.remove:hover {
+    cursor: pointer;
+    color: red;
+}
+
+._200, ._301, ._302, ._303 {
+    background-color: #7ee097;
+}
+
+._401, ._404 { background-color: red; }
+
+._403 { background-color: #ccc; }
+
+#item-container { display: flex; flex-wrap: wrap; }
+
+input[name="url"] { min-width: 180px;}
