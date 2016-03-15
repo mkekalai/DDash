@@ -9,7 +9,9 @@ $( document ).ready(function() {
 
     socket.on('new_item', function(data) {
 	$('#item-container').append(data);
-	$('#form-container').toggle(400);
+	if($('#form-container').css('display') != 'none' ) {
+	    $('#form-container').slideUp(400);
+	}
 	$('#form-container input[name="url"]').val('');
 	$('#plus').css('opacity',1);
     });
