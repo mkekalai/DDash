@@ -37,8 +37,9 @@ def newresource():
         new_resource = models.Resource(url,status)
         db.session.add(new_resource)
         db.session.commit()
-        return render_template('new_item.html',
-                               item=new_resource)
+        socketio.emit('new_item',
+                      render_template('new_item.html', item=new_resource),
+                      broadcast=True)
 
 # Remove item from database and emit remove permission to client
 @socketio.on('remove_item')

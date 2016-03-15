@@ -7,6 +7,13 @@ $( document ).ready(function() {
 	jQuery('span#' + data['id']).parent().remove();
       });
 
+    socket.on('new_item', function(data) {
+	$('#item-container').append(data);
+	$('#form-container').toggle(400);
+	$('#form-container input[name="url"]').val('');
+	$('#plus').css('opacity',1);
+    });
+    
     // UI refresh when data has changed
     socket.on('message', function(data){
 	jQuery('#item-container').replaceWith(data);
@@ -34,14 +41,6 @@ $( document ).ready(function() {
 	    type: "POST",
 	    url: url,
 	    data: $(this).serialize(),
-	    success: function(data)
-	    {
-		console.log("form submit successfull...");
-		jQuery('#item-container').append(data);
-		jQuery('#form-container').toggle(400);
-		jQuery('#form-container input[name="url"]').val('');
-		jQuery('#plus').css('opacity',1);
-	    },
 	    error: function(data) {
 		console.log("Form submit error: " +  data);
 	    }
