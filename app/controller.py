@@ -13,12 +13,7 @@ class Controller():
         resources = models.Resource.query.all()
         changes_occurred = False
         for r in resources:
-            try:
-                conn = httplib.HTTPConnection(r.url)
-                conn.request('GET','/')
-                resp = conn.getresponse().status
-            except:
-                resp = 404
+            resp = self.get_status(r.url)
             # Save only changes to status table
             if int(resp) != int(r.httpstatus):
                 changes_occurred = True
